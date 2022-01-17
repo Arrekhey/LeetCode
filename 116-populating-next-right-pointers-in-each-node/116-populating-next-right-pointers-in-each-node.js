@@ -22,7 +22,6 @@ var connect = function(root) {
     }
     root.next = null
     function recursive(root1,root2){
-     //   console.log(root1,root2)
         root1.next = root2
         if(root1.left && root1.right){
           recursive(root1.left,root1.right)  
