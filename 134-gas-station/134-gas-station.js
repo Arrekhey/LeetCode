@@ -18,7 +18,6 @@ var canCompleteCircuit = function(gas, cost) {
         return [true,currentGas]
     }
     function backward(remGas,startIndex,endIndex){
-       // console.log(remGas,startIndex,endIndex)
         let currentGas = remGas
         for (let i=startIndex;i<endIndex;i++){
             currentGas+= gas[i]
@@ -34,17 +33,14 @@ var canCompleteCircuit = function(gas, cost) {
     
     for (let i=0;i<gas.length;i++){
         if(gas[i]>0){
-           let tempGas = forward(i)
-      // console.log(tempGas)
+         let tempGas = forward(i)
        if(tempGas[0]){
          let temp =  backward(tempGas[1],0,i)
-        // console.log(temp,"HUHU")
          if(temp[0]){
              return i
          }
        } 
-        }
-       
+        } 
     }
     return -1
 };
