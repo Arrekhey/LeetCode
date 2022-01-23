@@ -9,14 +9,33 @@ var lengthOfLongestSubstring = function(s) {
     let tempLength = 0
     for (let i=0;i<s.length;i++){
         if(myMap.has(s[i])){
+           // console.log(myMap)
             let temp = myMap.get(s[i])
-            myMap = new Map()
-            tempLength = 0
-            i = temp
+           // console.log(temp)
+            if(temp>=startIndex){
+                 startIndex = temp+1
+            myMap.set(s[i],i)
+              //  console.log(tempLength,maxLength)
+                if(tempLength>maxLength){
+                  //  console.log(tempLength,"hehehehe")
+                    maxLength = tempLength
+                }
+            tempLength = i-startIndex+1
+           // console.log(startIndex,myMap,i,tempLength,maxLength,s[i]) 
+            }
+            else {
+                tempLength++
+                if(tempLength>maxLength){
+                    maxLength = tempLength
+                }
+            }
+             myMap.set(s[i],i)
+          //  i = temp
         }
         else {
             myMap.set(s[i],i)
             tempLength++
+            console.log(tempLength)
             if(tempLength>maxLength){
                 maxLength = tempLength
             }
