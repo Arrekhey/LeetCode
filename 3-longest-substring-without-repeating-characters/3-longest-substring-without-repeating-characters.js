@@ -35,7 +35,7 @@ var lengthOfLongestSubstring = function(s) {
         else {
             myMap.set(s[i],i)
             tempLength++
-            console.log(tempLength)
+          //  console.log(tempLength)
             if(tempLength>maxLength){
                 maxLength = tempLength
             }
