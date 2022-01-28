@@ -4,7 +4,7 @@
  * @return {number[]}
  */
 var findOrder = function(numCourses, prerequisites) {
-    let resultArray = []
+    let resultSet = new Set()
     let visitedsSet = new Set()
     let graphMap = new Map()
     for (let i=0;i<prerequisites.length;i++){
@@ -23,10 +23,7 @@ var findOrder = function(numCourses, prerequisites) {
             }
             let temp = graphMap.get(vertex)
             if(temp==undefined){
-                //console.log(vertex)
-                if(!resultArray.includes(vertex)){
-                    resultArray.push(vertex)
-                }
+               resultSet.add(vertex)
                 return true
             }
             visitedsSet.add(vertex)
@@ -39,9 +36,7 @@ var findOrder = function(numCourses, prerequisites) {
             visitedsSet.delete(vertex)
             graphMap.set(vertex,[])
           //  console.log(vertex,"vertex")
-            if(!resultArray.includes(vertex)){
-                    resultArray.push(vertex)
-                }
+              resultSet.add(vertex)
             return true
         }
         for (let i=0;i<numCourses;i++){
@@ -49,7 +44,6 @@ var findOrder = function(numCourses, prerequisites) {
                 return []
             }
         }
-        return resultArray
-    
-    
+        return [...resultSet.keys()]
+
 };
