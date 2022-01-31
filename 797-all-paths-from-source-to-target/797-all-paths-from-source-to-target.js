@@ -11,7 +11,6 @@ var allPathsSourceTarget = function(graph) {
     let resultArray = []
     
     function traversal(vertex,arr){
-        console.log(vertex,arr)
         if(vertex===lastVertex){
             resultArray.push(arr)
             return
@@ -24,11 +23,9 @@ var allPathsSourceTarget = function(graph) {
             arr.push(temp[i])
             traversal(temp[i],[...arr])
             arr.pop()
-             //graphMap.set(vertex,temp.unshift(temp1))
         }
        
     }
     traversal(0,[0])
-  //  console.log(graphMap)
 return resultArray
 };
