@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 var exist = function(board, word) {
-  let flag = false
+    let flag = false
     function searchBoard(rowIndex,columnIndex,index){
        // console.log(rowIndex,columnIndex)
         if(index===word.length-1 && word[index]==board[rowIndex][columnIndex]){
