@@ -13,7 +13,6 @@ var BrowserHistory = function(homepage) {
  * @return {void}
  */
 BrowserHistory.prototype.visit = function(url) {
-   //  this.maxPage++
      let temp = this.currentPage
      for (let [key,value] of this.browserMap.entries()){
          if(key>temp){
