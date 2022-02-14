@@ -4,34 +4,21 @@
  * @return {number}
  */
 var minSubArrayLen = function(target, nums) {
-    let len = +Infinity
-    let start = 0 
-    let current = 0
-    let sum = 0
-    while(current<nums.length){  
-        if(sum<target){
-            sum+= nums[current]
-            if(sum>=target){
-                if(current-start<len){
-                    len = current-start+1
-                }
-            }
-        }
-        if(sum>=target){
-            sum-= nums[start]
-            start++
-            if(sum>=target){
-                if(current-start<len){
-                    len = current-start+1
-                }
-            }
-        } 
-        if(sum<target){
-             current++ 
-        }    
-    }
-    if(len===+Infinity){
-        return 0
-    }
-    return len
+  let sum = 0
+  let startIndex = 0
+  let endIndex = 0
+  let maxLength = +Infinity
+  for (let i=0;i<nums.length;i++){
+      sum+= nums[i]
+      if(sum>=target){
+          maxLength = Math.min(maxLength,i-endIndex+1)
+         // console.log(maxLength)
+          while(sum>=target){
+               maxLength = Math.min(maxLength,i-endIndex+1)
+              sum-=nums[endIndex]
+              endIndex++
+          }
+      }
+  }
+    return maxLength==+Infinity?0:maxLength
 };
