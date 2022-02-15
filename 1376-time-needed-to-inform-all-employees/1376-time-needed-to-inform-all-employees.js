@@ -19,11 +19,8 @@ var numOfMinutes = function(n, headID, manager, informTime) {
             
         }
     }
-   // console.log(graphMap)
     function recursive(head,time){
-       // console.log(head,time)
         let temp = graphMap.get(head)
-     //   console.log(temp,"temp")
         if(temp===undefined){
             return
         }
@@ -31,7 +28,6 @@ var numOfMinutes = function(n, headID, manager, informTime) {
             maxTime = time
         }
         for (let i=0;i<temp.length;i++){
-           // console.log(temp[i],informTime[headID])
             recursive(temp[i],time+informTime[temp[i]])
         }
     }
