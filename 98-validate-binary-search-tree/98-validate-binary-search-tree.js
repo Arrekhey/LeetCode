@@ -11,17 +11,20 @@
  * @return {boolean}
  */
 var isValidBST = function(root) {
+    let flag = true
     function recursive(root,left,right){
-    
+       // console.log(root)
         if(!root){
             return true
         }
-    //    console.log(root.val)
-        if(!(root.val<right) || !(root.val>left)){
-         //   console.log("hey")
-            return false
+        if(root.val<=left || root.val>=right){
+           // console.log("Hey")
+            flag = false
+            return 
         }
-        return recursive(root.left,left,root.val) && recursive(root.right,root.val,right)
+        recursive(root.left,left,root.val)  
+        recursive(root.right,root.val,right)
     }
-    return recursive(root,-Infinity,+Infinity)
+     recursive(root,-Infinity,+Infinity)
+     return flag
 };
