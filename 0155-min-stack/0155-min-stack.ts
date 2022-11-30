@@ -13,11 +13,13 @@ class MinStack {
      return this.stack[this.stack.length-1]
     }
     getMin(): number {
-       let newStack = [...this.stack]
-       newStack.sort(function(a,b){
-           return a-b
-       })
-        return newStack[0]
+     let min = +Infinity
+     for (let i=0;i<this.stack.length;i++){
+         if(this.stack[i]<min){
+             min = this.stack[i]
+         }
+     }
+        return min
     }
 }
 
